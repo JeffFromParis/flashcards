@@ -6,6 +6,7 @@ export const topicsSlice = createSlice({
         topics: {}
     },
     reducers: {
+        //Adds a new topic
         addTopic: (state, action) => {
             const newTopic = { 
                 id: action.payload.id,
@@ -15,8 +16,9 @@ export const topicsSlice = createSlice({
             }
             state.topics[action.payload.id] = newTopic;
         },
+        //Adds a quizz to a specific topic
         addQuizId: (state, action) => {
-            state.topics[action.payload.topicId].quizIds.push(action.payload.id);
+            state.topics[action.payload.topicId].quizIds.push(action.payload.id); // dans ce cas payload id fait ref a l'id du quizz.
         }
     }
 });
