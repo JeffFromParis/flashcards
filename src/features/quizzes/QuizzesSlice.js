@@ -12,7 +12,7 @@ export const quizzesSlice = createSlice({
                 id: action.payload.id,
                 name: action.payload.name,
                 topicId: action.payload.topicId,
-                cardsId: action.payload.cardsId
+                cardIds: action.payload.cardIds
             }
             state.quizzes[action.payload.id] = newQuizz;
         },
