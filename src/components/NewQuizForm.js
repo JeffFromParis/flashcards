@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import ROUTES from "../app/routes";
-import { selectTopics } from "../features/topics/TopicsSlice";
+import { selectTopics } from "../features/topics/TopicsSlice"; 
+import { addQuizThunk } from "../features/quizzes/QuizzesSlice"; //importing the thunk that allows a double action dispatching
 
 export default function NewQuizForm() {
   const [name, setName] = useState("");
@@ -22,7 +23,14 @@ export default function NewQuizForm() {
     const cardIds = [];
 
     // create the new cards here and add each card's id to cardIds
+    
     // create the new quiz here
+    dispatch(addQuizThunk({
+      id: uuidv4(),
+      name: name,
+      topicId: topicId,
+      cardIds: cardIds
+    }));
 
     history.push(ROUTES.quizzesRoute());
   };

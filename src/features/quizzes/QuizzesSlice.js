@@ -24,7 +24,9 @@ export const quizzesSlice = createSlice({
 export const addQuizThunk = payload => {
     return (dispatch) => {
         dispatch(quizzesSlice.actions.addQuizz(payload));
+        console.log(`Quizz ${payload.id} created.`)
         dispatch(addQuizId( { id: payload.id, topicId: payload.topicId } ));
+        console.log(`Quizz ${payload.id} added to the topic id ${payload.topicId}.`)
     }
 };
 
