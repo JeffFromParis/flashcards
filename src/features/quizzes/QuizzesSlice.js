@@ -23,13 +23,14 @@ export const quizzesSlice = createSlice({
 //The payload is here a quizz object
 export const addQuizThunk = payload => {
     return (dispatch) => {
-        dispatch(quizzesSlice.actions.addQuizz(payload));
-        console.log(`Quizz ${payload.id} created.`)
-        dispatch(addQuizId( { id: payload.id, topicId: payload.topicId } ));
-        console.log(`Quizz ${payload.id} added to the topic id ${payload.topicId}.`)
+        dispatch(addQuizz(payload));
+        dispatch(addQuizId({
+            id: payload.id,
+            topicId: payload.topicId
+        }));
     }
 };
 
-export const selectQuizzes = state => state.quizzes.quizzes;
+export const selectQuizzes = (state) => state.quizzes.quizzes;
 export const { addQuizz } = quizzesSlice.actions;
 export default quizzesSlice.reducer;
